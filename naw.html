@@ -31,7 +31,7 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
-            padding: 30px 15px;
+            padding: 5vh 4vw;
             position: relative;
         }
 
@@ -55,6 +55,8 @@
             overflow: hidden;
             margin: 20px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            height: auto;
+            max-height: 90vh;
         }
 
         .video-wrapper video {
@@ -122,32 +124,61 @@
                 padding: 10px 14px;
             }
         }
+
+        .scale-container {
+            transform-origin: top center;
+        }
+
+        @media (max-height: 700px) {
+            .scale-container {
+                transform: scale(0.85);
+            }
+        }
+
+        @media (max-height: 600px) {
+            .scale-container {
+                transform: scale(0.75);
+            }
+        }
+
+        @media (max-height: 500px) {
+            .scale-container {
+                transform: scale(0.65);
+            }
+        }
+
+        @media (max-height: 420px) {
+            .scale-container {
+                transform: scale(0.55);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="scale-container">
+        <div class="card-glass text-center">
+            <h1 style="font-family: 'Great Vibes', cursive; font-size: clamp(1.8rem, 6vw, 2.6rem);">Happy 22, My Forever
+                🎀✨</h1>
 
-    <div class="card-glass text-center">
-        <h1 style="font-family: 'Great Vibes', cursive; font-size: 2.34rem;">Happy 22, My Forever 🎀✨</h1>
 
+            <div class="video-wrapper">
+                <video autoplay muted loop playsinline>
 
-        <div class="video-wrapper">
-            <video autoplay muted loop playsinline>
+                    <source
+                        src="https://raw.githubusercontent.com/Nikshitha-git09/bday/main/WhatsApp%20Video%202025-07-09%20at%2002.12.53_2a633cdd.mp4"
+                        type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
 
-                <source
-                    src="https://raw.githubusercontent.com/Nikshitha-git09/bday/main/WhatsApp%20Video%202025-07-09%20at%2002.12.53_2a633cdd.mp4"
-                    type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+            <div id="countdown">Countdown loading...</div>
 
-        <div id="countdown">Countdown loading...</div>
+            <p class="mt-4 fs-5" style="color: #6b497f;">
+                Fearfully and wonderfully made — and so deeply loved.🤗💖♾️
+            </p>
 
-        <p class="mt-4 fs-5" style="color: #6b497f;">
-            Fearfully and wonderfully made — and so deeply loved.🤗💖♾️
-        </p>
-
-        <!-- <button id="playMusic" class="btn btn-outline-light mt-3 px-4 py-2"
+            <!-- <button id="playMusic" class="btn btn-outline-light mt-3 px-4 py-2"
             style="border-radius: 30px; font-weight: 600;">
             🎵 Play Birthday Music
         </button>
@@ -158,8 +189,8 @@
             Your browser does not support the audio tag.
         </audio> -->
 
+        </div>
     </div>
-
     <!-- Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
