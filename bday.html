@@ -16,28 +16,23 @@
     <style>
         html,
         body {
-            height: 100%;
             margin: 0;
-            overflow-x: hidden;
+            padding: 0;
             font-family: 'Quicksand', sans-serif;
             background: linear-gradient(135deg, #ffc0e8, #eab4ad, #fbbc8f, #f9b9ce);
             color: #360354;
-            min-height: 100vh;
-            padding: 40px 20px;
-            display: block;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
-            overflow-y: auto;
+            min-height: 100vh;
+            box-sizing: border-box;
+            padding: 30px 15px;
             position: relative;
-        }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
         }
 
         .card-glass {
@@ -47,41 +42,26 @@
             -webkit-backdrop-filter: blur(14px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            max-width: 600px;
             width: 100%;
+            max-width: 500px;
             padding: 30px;
+            margin-bottom: 40px;
         }
 
         .video-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 360px;
-    aspect-ratio: 9 / 16;
-    border-radius: 20px;
-    margin: 20px auto;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-}
-
-
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+        }
 
         .video-wrapper video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 20px;
-        }
-
-        .sparkle {
-            position: fixed;
-            width: 6px;
-            height: 6px;
-            background: white;
-            border-radius: 50%;
-            animation: sparkle 3s infinite ease-in-out;
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 9999;
         }
 
         #countdown {
@@ -108,6 +88,18 @@
             }
         }
 
+        .sparkle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s infinite ease-in-out;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
         @keyframes sparkle {
             0% {
                 transform: translateY(0) scale(1);
@@ -122,7 +114,7 @@
 
         @media (max-width: 576px) {
             h1 {
-                font-size: 2.4rem;
+                font-size: 2.3rem;
             }
 
             #countdown {
