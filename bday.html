@@ -22,7 +22,9 @@
             font-family: 'Quicksand', sans-serif;
             background: linear-gradient(135deg, #ffc0e8, #eab4ad, #fbbc8f, #f9b9ce);
             color: #360354;
-            padding: 0;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: block;
         }
 
         body {
@@ -51,15 +53,16 @@
         }
 
         .video-wrapper {
-            position: relative;
-            aspect-ratio: 9 / 16;
-            height: auto;
-            overflow: hidden;
-            border-radius: 20px;
-            margin: 15px auto;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-            max-width: 360px;
-        }
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 9 / 16;
+    border-radius: 20px;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
 
 
         .video-wrapper video {
