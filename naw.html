@@ -156,10 +156,31 @@
 </head>
 
 <body>
+    <div id="overlay" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #ffc0e8, #eab4ad, #fbbc8f, #f9b9ce);
+  color: #360354;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+">
+       <h2 id="tapToEnter" style="font-size: 2rem; margin-bottom: 20px; cursor: pointer;">🎉 Tap in! Tap in!✨🎵</h2>
+    <!-- <p style="font-size: 1.1rem;">✨🎵</p> -->
+</div>
+
     <div class="scale-container">
         <div class="card-glass text-center">
-            <h1 style="font-family: 'Great Vibes', cursive; font-size: clamp(1.8rem, 6vw, 2.6rem);">Happy 22, My Forever
-                🎀✨</h1>
+           <h1 style="font-size: clamp(1.8rem, 6vw, 2.6rem); font-family: 'Great Vibes', cursive;">
+    Happy 22, My Forever 🎀✨
+</h1>
 
 
             <div class="video-wrapper">
@@ -179,49 +200,68 @@
             </p>
 
             <!-- <button id="playMusic" class="btn btn-outline-light mt-3 px-4 py-2"
-            style="border-radius: 30px; font-weight: 600;">
-            🎵 Play Birthday Music
-        </button>
+                style="border-radius: 30px; font-weight: 600;">
+                🎵 Play Birthday Music
+            </button> -->
 
-        <audio id="bgMusic" autoplay muted loop>
-            <source src="https://pixabay.com/music/beautiful-plays-instrumental-undertone-music-275398/"
-                type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio> -->
+            <audio id="bgMusic" autoplay muted loop>
+                <source src="https://raw.githubusercontent.com/Nikshitha-git09/bday/main/Kali%20Uchis%20-%20All%20I%20Can%20Say%20(Audio)%20(mp3cut.net).mp3
+" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
 
         </div>
     </div>
     <!-- Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        confetti({
-            particleCount: 120,
-            spread: 90,
-            origin: { y: 0.6 },
-            colors: ['#e5d1f2', '#fbd6d2', '#ffffff', '#cfa4f5'],
+        // Overlay click handler
+        document.getElementById('overlay').addEventListener('click', () => {
+            document.getElementById('overlay').style.display = 'none';
+
+            const music = document.getElementById('bgMusic');
+            music.muted = false;
+            music.play().catch(e => console.log("Audio play blocked:", e));
+
+            const video = document.querySelector('.video-wrapper video');
+            video.muted = false;
+            video.play().catch(e => console.log("Video play blocked:", e));
+
+            // Start confetti and countdown once user taps
+            confetti({
+                particleCount: 120,
+                spread: 90,
+                origin: { y: 0.6 },
+                colors: ['#e5d1f2', '#fbd6d2', '#ffffff', '#cfa4f5'],
+            });
+
+            const target = new Date("July 10, 2025 00:00:00").getTime();
+            const countdown = document.getElementById("countdown");
+
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    clearInterval(timer);
+                    countdown.innerHTML = "🎉 It's your birthday!";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                countdown.innerHTML = `🕰 ${days}d ${hours}h ${mins}m ${secs}s left`;
+            }, 1000);
+
+            // Sparkles
+            setInterval(createSparkle, 300);
         });
 
-        const target = new Date("July 10, 2025 00:00:00").getTime();
-        const countdown = document.getElementById("countdown");
-
-        const timer = setInterval(() => {
-            const now = new Date().getTime();
-            const diff = target - now;
-
-            if (diff <= 0) {
-                clearInterval(timer);
-                countdown.innerHTML = "🎉 It's your birthday!";
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-            countdown.innerHTML = `🕰 ${days}d ${hours}h ${mins}m ${secs}s left`;
-        }, 1000);
-
+        // Sparkle function (same as before)
         let sparkleCount = 0;
         function createSparkle() {
             if (sparkleCount > 30) return;
@@ -237,16 +277,8 @@
                 sparkleCount--;
             }, 5000);
         }
-
-
-        setInterval(createSparkle, 300);
-
-        // Music Play Handler
-        document.getElementById('playMusic').addEventListener('click', () => {
-            const music = document.getElementById('bgMusic');
-            music.play();
-        });
     </script>
+
 
 </body>
 
